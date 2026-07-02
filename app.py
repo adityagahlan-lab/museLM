@@ -10,7 +10,7 @@ st.set_page_config(
     layout="centered"
 )
 
-st.title("🤖 ChatLM")
+st.title("🤖 MuseLM")
 st.caption("A conversational language model built from scratch.")
 
 # ---- Load model and tokenizer (cached so it only loads once) ----
