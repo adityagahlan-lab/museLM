@@ -1,5 +1,6 @@
 import torch
 import streamlit as st
+import os
 from model import MuseLM, embedding_dim, block_size, num_heads
 from tokenizers import ByteLevelBPETokenizer
 
@@ -17,16 +18,18 @@ st.caption("A conversational language model built from scratch.")
 @st.cache_resource
 def load_model():
     device = "cuda" if torch.cuda.is_available() else "cpu"
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
     tokenizer = ByteLevelBPETokenizer(
-        "../musellm_tokenizer-vocab.json",
-        "../musellm_tokenizer-merges.txt"
+        os.path.join(BASE_DIR, "musellm_tokenizer-vocab.json"),
+        os.path.join(BASE_DIR, "musellm_tokenizer-merges.txt"),
         )
+
 
     num_layers = 6
     vocab_size = tokenizer.get_vocab_size()
     model = MuseLM(vocab_size, embedding_dim, block_size, num_heads, num_layers)
-    checkpoint = torch.load("../musellm.pt", map_location=device)
+    checkpoint = torch.load("musellm.pt", map_location=device)
     model.load_state_dict(checkpoint["model"])
     model = model.to(device)
     model.eval()
