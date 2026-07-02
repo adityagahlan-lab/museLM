@@ -5,7 +5,7 @@ from tokenizers import ByteLevelBPETokenizer
 
 # ---- Page config ----
 st.set_page_config(
-    page_title="ChatLM",
+    page_title="MuseLM",
     page_icon="🤖",
     layout="centered"
 )
