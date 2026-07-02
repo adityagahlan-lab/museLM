@@ -1,0 +1,166 @@
+# MuseLM v1
+
+MuseLM is a lightweight decoder-only Transformer language model built from scratch in PyTorch. It includes a custom Byte Pair Encoding (BPE) tokenizer, a complete preprocessing pipeline, training scripts, and an interactive chat interface.
+
+This project was created as a learning-focused implementation of a modern language model architecture and serves as the foundation for future versions of MuseLM.
+
+---
+
+## Features
+
+* Decoder-only Transformer architecture
+* Custom BPE tokenizer (16,000 vocabulary)
+* Multi-head self-attention
+* Pre-LayerNorm transformer blocks
+* Weight tying between input embeddings and output layer
+* AdamW optimizer with cosine learning rate scheduling
+* Gradient clipping
+* Automatic checkpoint saving
+* Early stopping based on validation loss
+* Interactive multi-turn chat interface
+
+---
+
+## Model Specifications
+
+| Component           |                    Value |
+| ------------------- | -----------------------: |
+| Parameters          |             5.78 Million |
+| Embedding Dimension |                      192 |
+| Transformer Layers  |                        6 |
+| Attention Heads     |                        8 |
+| Context Length      |               128 Tokens |
+| Vocabulary Size     |                   16,000 |
+| Architecture        | Decoder-only Transformer |
+
+---
+
+## Training Data
+
+MuseLM v1 was trained on conversational datasets including:
+
+* UltraChat
+* OpenAssistant (OASST)
+
+Total training data:
+
+* ~190 Million tokens
+
+---
+
+## Project Structure
+
+```text
+MuseLM/
+│
+├── model.py
+├── train.py
+├── preprocess.py
+├── tokenizer.py
+├── chat.py
+├── musellm_tokenizer-vocab.json
+├── musellm_tokenizer-merges.txt
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## Installation
+
+```bash
+git clone https://github.com/adityagahlan-lab/MuseLM.git
+cd MuseLM
+
+pip install -r requirements.txt
+```
+
+---
+
+## Training
+
+After preprocessing the datasets:
+
+```bash
+python train.py
+```
+
+The best model is automatically saved as:
+
+```
+musellm.pt
+```
+
+Checkpoints are also saved periodically during training.
+
+---
+
+## Chat
+
+Launch the interactive chat interface:
+
+```bash
+python chat.py
+```
+
+Example:
+
+```
+You: Hello
+Bot: Hello! How can I help you today?
+```
+
+---
+
+## Current Limitations
+
+MuseLM v1 is an early research and learning project.
+
+Current limitations include:
+
+* Limited reasoning ability
+* Conversation quality is inconsistent
+* Sometimes generates unrelated responses
+* Small context window (128 tokens)
+* Small model size (5.8M parameters)
+
+Future versions will improve conversation quality, context length, model capacity, and training data preprocessing.
+
+---
+
+## Future Roadmap
+
+Planned improvements for MuseLM v2:
+
+* Larger Transformer architecture
+* Longer context window
+* Improved preprocessing pipeline
+* Better conversational formatting
+* Stronger instruction following
+* More efficient training
+
+---
+
+## Technologies Used
+
+* Python
+* PyTorch
+* Hugging Face Tokenizers
+
+---
+
+## License
+
+This project is released under the MIT License.
+
+---
+
+## Acknowledgements
+
+Training data was sourced from publicly available conversational datasets, including UltraChat and OpenAssistant.
+
+Special thanks to the open-source AI community for making research datasets and tooling available.
+
+---
+
+**MuseLM v1** represents the first complete training run of the MuseLM project and serves as the foundation for future iterations.

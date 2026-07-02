@@ -1,0 +1,37 @@
+# Python
+
+**pycache**/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+
+venv/
+.venv/
+env/
+
+# Model checkpoints
+
+checkpoint_*.pt
+optimizer.pt
+
+# Large preprocessing outputs
+
+token_chunks/
+tokens.pt
+
+# Training datasets
+
+*.csv
+*.jsonl
+*.parquet
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# IDE
+
+.vscode/
+.idea/
