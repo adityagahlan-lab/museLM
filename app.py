@@ -83,8 +83,8 @@ if user_input:
                 output_ids = model.generate(
                     idx,
                     max_new_tokens=150,
-                    temperature=0.8,
-                    top_k=40
+                    temperature=0.7,
+                    top_k=20
                 )
 
             response_ids = output_ids[0][len(st.session_state.conversation_ids):].tolist()
