@@ -26,7 +26,8 @@ def load_model():
     num_layers = 6
     vocab_size = tokenizer.get_vocab_size()
     model = MuseLM(vocab_size, embedding_dim, block_size, num_heads, num_layers)
-    model.load_state_dict(torch.load("musellm.pt", map_location=device))
+    checkpoint = torch.load("musellm.pt", map_location=device)
+    model.load_state_dict(checkpoint["model"])
     model = model.to(device)
     model.eval()
 
